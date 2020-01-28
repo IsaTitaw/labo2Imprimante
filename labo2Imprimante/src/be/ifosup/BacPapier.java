@@ -22,7 +22,7 @@ public class BacPapier {
         return nbFeuilles;
     }
 
-    public void setNbFeuilles(int nbFeuilles) {
+    protected void setNbFeuilles(int nbFeuilles) {
         this.nbFeuilles = nbFeuilles;
     }
 

@@ -22,7 +22,7 @@ public class Toner {
         return niveauEncre;
     }
 
-    public void setNiveauEncre(int niveauEncre) {
+    protected void setNiveauEncre(int niveauEncre) {
         this.niveauEncre = niveauEncre;
     }
 
