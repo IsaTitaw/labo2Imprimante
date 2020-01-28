@@ -1,7 +1,7 @@
 package be.ifosup;
 
 public class Toner {
-    private int niveauEncre= 100;
+    private int niveauEncre;
 
     /*Constructeur--------------------------------------------------------------------------------------------------------------------------------------------------*/
 
@@ -20,5 +20,14 @@ public class Toner {
 
     public int getNiveauEncre() {
         return niveauEncre;
+    }
+
+    public void setNiveauEncre(int niveauEncre) {
+        this.niveauEncre = niveauEncre;
+    }
+
+    /*-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------*/
+    public void remplacerToner(){
+        System.out.println("Nouveau toner installé");
     }
 }

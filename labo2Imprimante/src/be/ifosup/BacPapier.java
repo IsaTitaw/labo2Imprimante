@@ -25,4 +25,10 @@ public class BacPapier {
     public void setNbFeuilles(int nbFeuilles) {
         this.nbFeuilles = nbFeuilles;
     }
+
+    /*Méthodes-------------------------------------------------------------------------------------------------------------------------------------------------------*/
+    public void chargerpapier(int nbFeuillesChar){
+        System.out.println("Charger "+ nbFeuillesChar+" feuilles");
+
+    }
 }

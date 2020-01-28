@@ -2,15 +2,14 @@ package be.ifosup;
 
 public class Imprimante {
     private Toner leToner;
-    private Impression l_impression;
     private BacPapier leBac;
     private Commande laCommande;
 
+
     /*Constructeur-------------------------------------------------------------------------------------------------------------------*/
 
-    public Imprimante(Toner leToner, Impression l_impression, BacPapier leBac, Commande laCommande) {
+    public Imprimante(Toner leToner, BacPapier leBac, Commande laCommande) {
         this.leToner = leToner;
-        this.l_impression = l_impression;
         this.leBac = leBac;
         this.laCommande = laCommande;
     }
@@ -22,22 +21,25 @@ public class Imprimante {
         return leToner;
     }
 
-    private Impression getL_impression() {
-        return l_impression;
-    }
 
     private BacPapier getLeBac() {
         return leBac;
     }
 
-    private Commande getLaCommande() {
-        return laCommande;
-    }
+
 
     /*Méthodes-------------------------------------------------------------------------------------------------------------------------*/
 
-    public void imprimer(int nbPages, boolean type) {
-        if (type) {
+    public void allumerImprimante() {
+        laCommande.pousserOn();
+    }
+
+    public void imprimer(int nbPages, String type) {
+        int niveauDepart = leToner.getNiveauEncre();
+        int niveauRestant = niveauDepart - nbPages;
+        leToner.setNiveauEncre(niveauRestant);
+
+        if (type != "RV") {
             int nbDepart = leBac.getNbFeuilles();
             int nbRestant = nbDepart - nbPages;
             leBac.setNbFeuilles(nbRestant);
@@ -45,13 +47,28 @@ public class Imprimante {
 
         } else {
             int nbDepart = leBac.getNbFeuilles();
-            int nbRestant = nbDepart - (nbPages/2);
+            int nbRestant = nbDepart - (nbPages / 2);
             leBac.setNbFeuilles(nbRestant);
 
         }
-        System.out.println("Impression en cours de " + nbPages + " page(s).");
-        System.out.println("Nombre de feuilles restant: " + leBac.getNbFeuilles());
+
+        if (leBac.getNbFeuilles() >= nbPages && leToner.getNiveauEncre() >= nbPages) {
+            System.out.println("Impression en cours de " + nbPages + " page(s) en " + type);
+            System.out.println("Nombre de feuilles restant: " + leBac.getNbFeuilles());
+        }else{
+
+            System.out.println("impression annulée");
+                    if (leBac.getNbFeuilles() <= 0) {
+                        leBac.chargerpapier(100);   //on repart avec un nouveau bac à papier et on relance le main
+                        } else if (leToner.getNiveauEncre() <= 0) {
+                            leToner.remplacerToner();      //on repart avec un nouveau toner et on relance le main
 
 
+
+
+
+                      }
+
+        }
     }
 }

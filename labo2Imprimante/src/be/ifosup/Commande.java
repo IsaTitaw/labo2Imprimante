@@ -3,15 +3,15 @@ package be.ifosup;
 public class Commande {
     private Boolean on;
     private Boolean off;
-    private Boolean chargerPapier;
+
 
 
     /*Constructeur------------------------------------------------------------------------------------------------------------------------------*/
 
-    public Commande(Boolean on, Boolean off, Boolean chargerPapier) {
+    public Commande(Boolean on, Boolean off) {
         this.on = on;
         this.off = off;
-        this.chargerPapier = chargerPapier;
+
     }
 
     /*Getset--------------------------------------------------------------------------------------------------------------------------------------*/
@@ -24,23 +24,18 @@ public class Commande {
         return off;
     }
 
-    public Boolean getChargerPapier() {
-        return chargerPapier;
-    }
-
 
 
     /*Méthodes------------------------------------------------------------------------------------------------------------------------------------*/
-    public void pouserOn() {
+    public void pousserOn() {
+        System.out.println("L'imprimante est allumée");
 
     }
 
     public void pousserOff() {
-
+        System.out.println("L'imprimante est éteinte");
     }
 
-    public void pousserChargerPapier() {
 
-    }
 
 }
